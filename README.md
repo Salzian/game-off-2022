@@ -11,11 +11,12 @@ The game is based on the cliché: [_“Get lost”_](https://github.com/leereill
 ### Prerequisites
 
 - [Rust](https://www.rust-lang.org/tools/install)
+- [`just`](https://github.com/casey/just#packages)
 
 ### Running
 
 ```rust
-$ cargo run
+$ just run-dev
 ```
 
 ## Jammers
