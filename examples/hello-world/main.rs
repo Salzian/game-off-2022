@@ -38,10 +38,10 @@ fn setup_paddle(
         .insert(Paddle)
         .insert_bundle(MaterialMesh2dBundle {
             mesh: meshes.add(Mesh::from(shape::Quad::default())).into(),
-            material: materials.add(ColorMaterial::from(PADDLE_COLOR)),
+            material: materials.add(ColorMaterial::from(PADDLE_INITIAL_COLOR)),
             transform: Transform {
-                translation: PADDLE_TRANSLATION,
-                scale: PADDLE_SIZE,
+                translation: PADDLE_INITIAL_POSITION,
+                scale: PADDLE_INITIAL_SIZE,
                 ..default()
             },
             ..default()
@@ -62,9 +62,9 @@ fn control_paddle(mut query: Query<&mut Transform, With<Paddle>>, keyboard: Res<
     paddle_transform.translation.x += PADDLE_TRANSLATION_X_INCREMENT * direction;
 }
 
-const PADDLE_COLOR: Color = Color::ORANGE_RED;
-const PADDLE_TRANSLATION: Vec3 = Vec3::new(10.0, 10.0, 0.0);
-const PADDLE_SIZE: Vec3 = Vec3::new(250.0, 10.0, 0.0);
+const PADDLE_INITIAL_COLOR: Color = Color::ORANGE_RED;
+const PADDLE_INITIAL_POSITION: Vec3 = Vec3::new(10.0, 10.0, 0.0);
+const PADDLE_INITIAL_SIZE: Vec3 = Vec3::new(250.0, 10.0, 0.0);
 const PADDLE_TRANSLATION_X_INCREMENT: f32 = 5.0;
 
 #[derive(Component)]
