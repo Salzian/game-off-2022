@@ -46,21 +46,26 @@ fn setup_paddle(mut commands: Commands) {
 fn control_paddle(mut query: Query<&mut Transform, With<Paddle>>, keyboard: Res<Input<KeyCode>>) {
     let mut paddle_transform = query.single_mut();
 
-    let direction = if keyboard.pressed(KeyCode::Right) {
-        1.0
+    let translation = if keyboard.pressed(KeyCode::Right) {
+        PADDLE_TRANSLATION_X_INCREMENT
     } else if keyboard.pressed(KeyCode::Left) {
-        -1.0
+        PADDLE_TRANSLATION_X_INCREMENT * Vec3::NEG_X
+    } else if keyboard.pressed(KeyCode::Up) {
+        PADDLE_TRANSLATION_Y_INCREMENT
+    } else if keyboard.pressed(KeyCode::Down) {
+        PADDLE_TRANSLATION_Y_INCREMENT * Vec3::NEG_Y
     } else {
-        0.0
+        Vec3::ZERO
     };
 
-    paddle_transform.translation.x += PADDLE_TRANSLATION_X_INCREMENT * direction;
+    paddle_transform.translation += translation;
 }
 
 const PADDLE_INITIAL_COLOR: Color = Color::ORANGE_RED;
 const PADDLE_INITIAL_POSITION: Vec3 = Vec3::new(10.0, 10.0, 0.0);
 const PADDLE_INITIAL_SIZE: Vec3 = Vec3::new(50.0, 50.0, 0.0);
-const PADDLE_TRANSLATION_X_INCREMENT: f32 = 5.0;
+const PADDLE_TRANSLATION_X_INCREMENT: Vec3 = Vec3::new(5.0, 0.0, 0.0);
+const PADDLE_TRANSLATION_Y_INCREMENT: Vec3 = Vec3::new(0.0, 5.0, 0.0);
 
 #[derive(Component)]
 struct Paddle;
