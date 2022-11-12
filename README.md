@@ -12,6 +12,7 @@ The game is based on the cliché: [_“Get lost”_](https://github.com/leereill
 
 - [Rust](https://www.rust-lang.org/tools/install)
 - [`just`](https://github.com/casey/just#packages)
+- [`wasm-bindgen`](https://rustwasm.github.io/wasm-bindgen/reference/cli.html)
 
 ### Running
 
