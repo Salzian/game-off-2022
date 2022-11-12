@@ -1,9 +1,9 @@
 use bevy::{
     prelude::{
-        default, shape, App, Assets, Camera2dBundle, Color, Commands, Component, Input, KeyCode,
-        Mesh, Plugin, Query, Res, ResMut, Transform, Vec3, With,
+        default, App, Camera2dBundle, Color, Commands, Component, Input, KeyCode, Plugin, Query,
+        Res, Transform, Vec3, With,
     },
-    sprite::{ColorMaterial, MaterialMesh2dBundle},
+    sprite::{Sprite, SpriteBundle},
     DefaultPlugins,
 };
 
@@ -28,24 +28,19 @@ fn setup_camera(mut commands: Commands) {
     commands.spawn_bundle(Camera2dBundle::default());
 }
 
-fn setup_paddle(
-    mut commands: Commands,
-    mut meshes: ResMut<Assets<Mesh>>,
-    mut materials: ResMut<Assets<ColorMaterial>>,
-) {
-    commands
-        .spawn()
-        .insert(Paddle)
-        .insert_bundle(MaterialMesh2dBundle {
-            mesh: meshes.add(Mesh::from(shape::Quad::default())).into(),
-            material: materials.add(ColorMaterial::from(PADDLE_INITIAL_COLOR)),
-            transform: Transform {
-                translation: PADDLE_INITIAL_POSITION,
-                scale: PADDLE_INITIAL_SIZE,
-                ..default()
-            },
+fn setup_paddle(mut commands: Commands) {
+    commands.spawn().insert(Paddle).insert_bundle(SpriteBundle {
+        transform: Transform {
+            translation: PADDLE_INITIAL_POSITION,
+            scale: PADDLE_INITIAL_SIZE,
             ..default()
-        });
+        },
+        sprite: Sprite {
+            color: PADDLE_INITIAL_COLOR,
+            ..default()
+        },
+        ..default()
+    });
 }
 
 fn control_paddle(mut query: Query<&mut Transform, With<Paddle>>, keyboard: Res<Input<KeyCode>>) {
