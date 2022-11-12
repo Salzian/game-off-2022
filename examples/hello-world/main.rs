@@ -59,7 +59,7 @@ fn control_paddle(mut query: Query<&mut Transform, With<Paddle>>, keyboard: Res<
 
 const PADDLE_INITIAL_COLOR: Color = Color::ORANGE_RED;
 const PADDLE_INITIAL_POSITION: Vec3 = Vec3::new(10.0, 10.0, 0.0);
-const PADDLE_INITIAL_SIZE: Vec3 = Vec3::new(250.0, 10.0, 0.0);
+const PADDLE_INITIAL_SIZE: Vec3 = Vec3::new(50.0, 50.0, 0.0);
 const PADDLE_TRANSLATION_X_INCREMENT: f32 = 5.0;
 
 #[derive(Component)]
