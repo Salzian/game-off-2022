@@ -1,9 +1,9 @@
 _default:
     @just --list
 
-run-dev:
+run-dev *FLAGS:
     @just _assert-is-installed cargo
-    cargo run
+    cargo run {{FLAGS}}
 
 build-web:
     @just _assert-is-installed rustup
