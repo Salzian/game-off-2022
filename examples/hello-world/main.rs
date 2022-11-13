@@ -25,11 +25,11 @@ impl Plugin for GamePlugin {
 }
 
 fn setup_camera(mut commands: Commands) {
-    commands.spawn_bundle(Camera2dBundle::default());
+    commands.spawn(Camera2dBundle::default());
 }
 
 fn setup_paddle(mut commands: Commands) {
-    commands.spawn().insert(Paddle).insert_bundle(SpriteBundle {
+    commands.spawn_empty().insert(Paddle).insert(SpriteBundle {
         transform: Transform {
             translation: PADDLE_INITIAL_POSITION,
             scale: PADDLE_INITIAL_SIZE,
