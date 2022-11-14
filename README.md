@@ -22,7 +22,7 @@ just run-dev
 
 ## Design
 
-The games design is (rudimentary) documented in [this Dropbox Paper][dropbox-paper].
+The game's design is (rudimentarily) documented in [this Dropbox Paper][dropbox-paper].
 
 ## Jammers
 
