@@ -1,4 +1,4 @@
-use crate::player::{Player, PlayerPlugin};
+use crate::player_plugin::{Player, PlayerPlugin};
 use bevy::app::Plugin;
 use bevy::prelude::*;
 

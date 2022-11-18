@@ -3,7 +3,7 @@ use bevy::DefaultPlugins;
 use game_plugin::GamePlugin;
 
 mod game_plugin;
-mod player;
+mod player_plugin;
 
 fn main() {
     App::new()
