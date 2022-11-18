@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 bevy = "0.9"
 bevy_pathmesh = { git = "https://github.com/vleue/bevy_pathmesh", version = "0.3.0" }
+polyanya = "0.2.0"
