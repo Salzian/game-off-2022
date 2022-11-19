@@ -36,31 +36,35 @@ fn setup_player(mut commands: Commands) {
     });
 }
 
-fn control_player(mut query: Query<&mut Transform, With<Player>>, keyboard: Res<Input<KeyCode>>) {
+fn control_player(
+    mut query: Query<&mut Transform, With<Player>>,
+    keyboard: Res<Input<KeyCode>>,
+    time: Res<Time>,
+) {
     let mut player_transform = query.single_mut();
 
     let mut new_translation = Vec3::ZERO;
 
     if keyboard.pressed(KeyCode::Right) {
-        new_translation = new_translation.add(PLAYER_TRANSLATION_X_INCREMENT)
+        new_translation = new_translation.add(PLAYER_SPEED * Vec3::X * time.delta_seconds());
     }
 
     if keyboard.pressed(KeyCode::Left) {
-        new_translation = new_translation.add(PLAYER_TRANSLATION_X_INCREMENT * Vec3::NEG_X)
+        new_translation = new_translation.add(PLAYER_SPEED * Vec3::NEG_X * time.delta_seconds());
     }
 
     if keyboard.pressed(KeyCode::Up) {
-        new_translation = new_translation.add(PLAYER_TRANSLATION_Y_INCREMENT)
+        new_translation = new_translation.add(PLAYER_SPEED * Vec3::Y * time.delta_seconds());
     }
 
     if keyboard.pressed(KeyCode::Down) {
-        new_translation = new_translation.add(PLAYER_TRANSLATION_Y_INCREMENT * Vec3::NEG_Y);
+        new_translation = new_translation.add(PLAYER_SPEED * Vec3::NEG_Y * time.delta_seconds());
     }
 
     player_transform.translation += new_translation;
 }
 
+const PLAYER_SPEED: f32 = 500.0;
+
 const PLAYER_INITIAL_COLOR: Color = Color::ORANGE_RED;
 const PLAYER_INITIAL_SIZE: Vec3 = Vec3::new(50.0, 50.0, 0.0);
-const PLAYER_TRANSLATION_X_INCREMENT: Vec3 = Vec3::new(5.0, 0.0, 0.0);
-const PLAYER_TRANSLATION_Y_INCREMENT: Vec3 = Vec3::new(0.0, 5.0, 0.0);
