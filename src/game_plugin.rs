@@ -9,7 +9,7 @@ impl Plugin for GamePlugin {
     fn build(&self, app: &mut App) {
         app.add_plugin(PlayerPlugin)
             .add_plugin(PathmeshPlugin)
-            .add_startup_system_to_stage(StartupStage::PreStartup, load_assets)
+            .add_startup_system(load_assets)
             .add_startup_system(setup_camera)
             .add_system(await_loading_assets)
             .add_system(move_camera);
