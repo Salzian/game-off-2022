@@ -28,7 +28,7 @@ struct PathMeshResource {
 }
 
 fn load_assets(asset_server: Res<AssetServer>, mut commands: Commands) {
-    let handle = asset_server.load("arena-merged.polyanya.mesh");
+    let handle = asset_server.load("arena.polyanya.mesh");
     commands.insert_resource(PathMeshResource {
         path_mesh: handle,
         loaded: false,
@@ -57,7 +57,7 @@ fn setup_scene(
 
     // let handle = &path_mesh_resources.path_mesh;
 
-    let handle = asset_server.load("arena-merged.polyanya.mesh");
+    let handle = asset_server.load("arena.polyanya.mesh");
     let arena_mesh = path_mesh_assets.get(&handle).unwrap();
 
     let mesh_size = Vec2::new(49.0, 49.0);
