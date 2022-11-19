@@ -24,7 +24,7 @@ struct PathMeshResource {
 }
 
 fn load_assets(asset_server: Res<AssetServer>, mut commands: Commands) {
-    let arena_path_mesh_handle = asset_server.load("arena.polyanya.mesh"); // TODO: Move into meshes directory
+    let arena_path_mesh_handle = asset_server.load("meshes/arena.polyanya.mesh");
 
     commands.insert_resource(PathMeshResource {
         handle: arena_path_mesh_handle,
