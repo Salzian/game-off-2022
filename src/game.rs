@@ -3,7 +3,7 @@ use bevy::prelude::*;
 use bevy::{app::Plugin, sprite::MaterialMesh2dBundle};
 use bevy_pathmesh::{PathMesh, PathmeshPlugin};
 
-pub struct GamePlugin;
+pub(crate) struct GamePlugin;
 
 impl Plugin for GamePlugin {
     fn build(&self, app: &mut App) {
