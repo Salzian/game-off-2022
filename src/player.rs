@@ -20,21 +20,23 @@ pub(crate) struct PlayerBundle {
 pub(crate) struct Player;
 
 fn setup_player(mut commands: Commands) {
-    commands.spawn(PlayerBundle {
-        sprite_bundle: SpriteBundle {
-            transform: Transform {
-                translation: PLAYER_INITIAL_TRANSLATION,
-                scale: PLAYER_INITIAL_SIZE,
-                ..default()
-            },
-            sprite: Sprite {
-                color: PLAYER_INITIAL_COLOR,
+    commands
+        .spawn(PlayerBundle {
+            sprite_bundle: SpriteBundle {
+                transform: Transform {
+                    translation: PLAYER_INITIAL_TRANSLATION,
+                    scale: PLAYER_INITIAL_SIZE,
+                    ..default()
+                },
+                sprite: Sprite {
+                    color: PLAYER_INITIAL_COLOR,
+                    ..default()
+                },
                 ..default()
             },
             ..default()
-        },
-        ..default()
-    });
+        })
+        .insert(Name::new("Player"));
 }
 
 fn control_player(
