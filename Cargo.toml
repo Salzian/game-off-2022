@@ -5,8 +5,17 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+# We define some optimizations to make the game run faster in debug mode at the
+# cost of a longer initial compile.
+
+[profile.dev]
+opt-level = 1       # Basic optimizations
+
+[profile.dev.package."*"]
+opt-level = 3       # All optimizations
+
 [dependencies]
-bevy = "0.9"
+bevy = { version = "0.9", features = ["dynamic"] }
 bevy-inspector-egui = "0.14.0"
 bevy_pathmesh = { git = "https://github.com/vleue/bevy_pathmesh", version = "0.3.0" }
 polyanya = "0.2.0"
