@@ -23,7 +23,7 @@ fn setup_player(mut commands: Commands) {
     commands.spawn(PlayerBundle {
         sprite_bundle: SpriteBundle {
             transform: Transform {
-                translation: PADDLE_INITIAL_POSITION,
+                translation: PLAYER_INITIAL_TRANSLATION,
                 scale: PLAYER_INITIAL_SIZE,
                 ..default()
             },
@@ -66,7 +66,8 @@ fn control_player(
     player_transform.translation += new_translation;
 }
 
-const PADDLE_INITIAL_POSITION: Vec3 = Vec3::new(0.0, 0.0, 1.0 /* Positions player on top */);
+// Set the player's z-position at 1.0 so that it renders above other entities.
+const PLAYER_INITIAL_TRANSLATION: Vec3 = Vec3::new(0.0, 0.0, 1.0);
 const PLAYER_INITIAL_SIZE: Vec3 = Vec3::new(50.0, 50.0, 0.0);
 const PLAYER_INITIAL_COLOR: Color = Color::ORANGE_RED;
 
