@@ -1,9 +1,6 @@
 use bevy::prelude::*;
 use std::ops::Add;
 
-#[derive(Component, Default)]
-pub(crate) struct Player;
-
 pub(crate) struct PlayerPlugin;
 
 impl Plugin for PlayerPlugin {
@@ -18,6 +15,9 @@ pub(crate) struct PlayerBundle {
     player: Player,
     sprite_bundle: SpriteBundle,
 }
+
+#[derive(Component, Default)]
+pub(crate) struct Player;
 
 fn setup_player(mut commands: Commands) {
     commands.spawn(PlayerBundle {
