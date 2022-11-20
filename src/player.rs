@@ -43,10 +43,11 @@ fn control_player(
     time: Res<Time>,
 ) {
     let mut player_transform = query.single_mut();
-
     let mut new_translation = Vec3::ZERO;
 
     if keyboard.pressed(KeyCode::Right) {
+        // time.delta_seconds() is being used to make the player move at a
+        // constant speed across different frame rates.
         new_translation = new_translation.add(PLAYER_SPEED * Vec3::X * time.delta_seconds());
     }
 
