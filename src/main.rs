@@ -2,6 +2,7 @@ use bevy::prelude::*;
 use game::GamePlugin;
 
 mod game;
+mod map;
 mod player;
 
 fn main() {
