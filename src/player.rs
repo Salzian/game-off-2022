@@ -1,4 +1,5 @@
 use bevy::prelude::*;
+use bevy_inspector_egui::Inspectable;
 use std::ops::Add;
 
 pub(crate) struct PlayerPlugin;
@@ -16,7 +17,7 @@ pub(crate) struct PlayerBundle {
     sprite_bundle: SpriteBundle,
 }
 
-#[derive(Component, Default)]
+#[derive(Component, Default, Inspectable)]
 pub(crate) struct Player;
 
 fn setup_player(mut commands: Commands) {
