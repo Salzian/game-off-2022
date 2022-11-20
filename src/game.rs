@@ -1,4 +1,4 @@
-use crate::player_plugin::{Player, PlayerPlugin};
+use crate::player::{Player, PlayerPlugin};
 use bevy::prelude::*;
 use bevy::{app::Plugin, sprite::MaterialMesh2dBundle};
 use bevy_pathmesh::{PathMesh, PathmeshPlugin};
