@@ -48,19 +48,19 @@ fn control_player(
     if keyboard.pressed(KeyCode::Right) {
         // time.delta_seconds() is being used to make the player move at a
         // constant speed across different frame rates.
-        new_translation = new_translation.add(PLAYER_SPEED * Vec3::X * time.delta_seconds());
+        new_translation = new_translation.add(PLAYER_SPEED * time.delta_seconds() * Vec3::X);
     }
 
     if keyboard.pressed(KeyCode::Left) {
-        new_translation = new_translation.add(PLAYER_SPEED * Vec3::NEG_X * time.delta_seconds());
+        new_translation = new_translation.add(PLAYER_SPEED * time.delta_seconds() * Vec3::NEG_X);
     }
 
     if keyboard.pressed(KeyCode::Up) {
-        new_translation = new_translation.add(PLAYER_SPEED * Vec3::Y * time.delta_seconds());
+        new_translation = new_translation.add(PLAYER_SPEED * time.delta_seconds() * Vec3::Y);
     }
 
     if keyboard.pressed(KeyCode::Down) {
-        new_translation = new_translation.add(PLAYER_SPEED * Vec3::NEG_Y * time.delta_seconds());
+        new_translation = new_translation.add(PLAYER_SPEED * time.delta_seconds() * Vec3::NEG_Y);
     }
 
     player_transform.translation += new_translation;
