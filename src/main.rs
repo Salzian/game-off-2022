@@ -1,6 +1,8 @@
 use bevy::prelude::*;
+use debug::DebugPlugin;
 use game::GamePlugin;
 
+mod debug;
 mod game;
 mod map;
 mod player;
@@ -15,6 +17,7 @@ fn main() {
             },
             ..default()
         }))
+        .add_plugin(DebugPlugin)
         .add_plugin(GamePlugin)
         .run();
 }
