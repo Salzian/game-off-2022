@@ -70,11 +70,13 @@ fn setup_map(
         0.0,
     );
 
-    commands.spawn(MaterialMesh2dBundle {
-        mesh: mesh_assets.add(map_mesh).into(),
-        material: material_assets.add(ColorMaterial::from(Color::GRAY)),
-        transform: Transform::from_translation(map_mesh_translation)
-            .with_scale(Vec3::splat(map_mesh_scaling_factor)),
-        ..default()
-    });
+    commands
+        .spawn(MaterialMesh2dBundle {
+            mesh: mesh_assets.add(map_mesh).into(),
+            material: material_assets.add(ColorMaterial::from(Color::GRAY)),
+            transform: Transform::from_translation(map_mesh_translation)
+                .with_scale(Vec3::splat(map_mesh_scaling_factor)),
+            ..default()
+        })
+        .insert(Name::new("Map"));
 }
