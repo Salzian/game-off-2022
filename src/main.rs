@@ -1,8 +1,9 @@
 use bevy::prelude::*;
-use game_plugin::GamePlugin;
+use game::GamePlugin;
 
-mod game_plugin;
-mod player_plugin;
+mod game;
+mod map;
+mod player;
 
 fn main() {
     App::new()

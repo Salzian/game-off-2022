@@ -1,9 +1,6 @@
 use bevy::prelude::*;
 use std::ops::Add;
 
-#[derive(Component, Default)]
-pub(crate) struct Player;
-
 pub(crate) struct PlayerPlugin;
 
 impl Plugin for PlayerPlugin {
@@ -19,11 +16,14 @@ pub(crate) struct PlayerBundle {
     sprite_bundle: SpriteBundle,
 }
 
+#[derive(Component, Default)]
+pub(crate) struct Player;
+
 fn setup_player(mut commands: Commands) {
     commands.spawn(PlayerBundle {
         sprite_bundle: SpriteBundle {
             transform: Transform {
-                translation: PADDLE_INITIAL_POSITION,
+                translation: PLAYER_INITIAL_TRANSLATION,
                 scale: PLAYER_INITIAL_SIZE,
                 ..default()
             },
@@ -43,29 +43,31 @@ fn control_player(
     time: Res<Time>,
 ) {
     let mut player_transform = query.single_mut();
-
     let mut new_translation = Vec3::ZERO;
 
     if keyboard.pressed(KeyCode::Right) {
-        new_translation = new_translation.add(PLAYER_SPEED * Vec3::X * time.delta_seconds());
+        // time.delta_seconds() is being used to make the player move at a
+        // constant speed across different frame rates.
+        new_translation = new_translation.add(PLAYER_SPEED * time.delta_seconds() * Vec3::X);
     }
 
     if keyboard.pressed(KeyCode::Left) {
-        new_translation = new_translation.add(PLAYER_SPEED * Vec3::NEG_X * time.delta_seconds());
+        new_translation = new_translation.add(PLAYER_SPEED * time.delta_seconds() * Vec3::NEG_X);
     }
 
     if keyboard.pressed(KeyCode::Up) {
-        new_translation = new_translation.add(PLAYER_SPEED * Vec3::Y * time.delta_seconds());
+        new_translation = new_translation.add(PLAYER_SPEED * time.delta_seconds() * Vec3::Y);
     }
 
     if keyboard.pressed(KeyCode::Down) {
-        new_translation = new_translation.add(PLAYER_SPEED * Vec3::NEG_Y * time.delta_seconds());
+        new_translation = new_translation.add(PLAYER_SPEED * time.delta_seconds() * Vec3::NEG_Y);
     }
 
     player_transform.translation += new_translation;
 }
 
-const PADDLE_INITIAL_POSITION: Vec3 = Vec3::new(0.0, 0.0, 1.0 /* Positions player on top */);
+// Set the player's z-position at 1.0 so that it renders above other entities.
+const PLAYER_INITIAL_TRANSLATION: Vec3 = Vec3::new(0.0, 0.0, 1.0);
 const PLAYER_INITIAL_SIZE: Vec3 = Vec3::new(50.0, 50.0, 0.0);
 const PLAYER_INITIAL_COLOR: Color = Color::ORANGE_RED;
 
