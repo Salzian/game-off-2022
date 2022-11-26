@@ -1,3 +1,5 @@
+#![allow(clippy::too_many_arguments)] // Welcome to bevy
+
 use bevy::prelude::*;
 use game::GamePlugin;
 
